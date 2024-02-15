@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mobile Student Desktop</title>
+        <meta charset="utf-8" />
+        <meta name=viewport content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+        <meta name="format-detection" content="telephone=no">
+           <meta http-equiv="Content-Security-Policy" content="default-src * data: blob: gap://ready file:; style-src 'self' 'unsafe-inline';script-src * 'unsafe-inline' 'unsafe-eval' https://webservices.securetrading.net https://www.googletagmanager.com https://songbirdstag.cardinalcommerce.com https://songbird.cardinalcommerce.com https://pay.gocardless.com">
+                <link rel="stylesheet" type="text/css" href="css/base/jquery.mobile.css" />
+                <link rel="stylesheet" type="text/css" href="css/base/jquery.mobile.icons.min.css" />
+                <link rel="stylesheet" type="text/css" href="css/base/jquery.mobile.theme.css" />
+                <link rel="stylesheet" type="text/css" href="css/base/mediaelementplayer.min.css" />
+                <link rel="stylesheet" type="text/css" href="css/base/datebox.css" />
+                <link rel="stylesheet" type="text/css" href="css/base/eteacher.css"/>
+                <link rel="stylesheet" type="text/css" href="css/base/eteacher.mobile.css"/>
+                <link rel="stylesheet" type="text/css" href="css/client/client.css"/>
+                <link rel="stylesheet" type="text/css" href="css/base/jquery-ui.min.css"/>
+                <link rel="stylesheet" type="text/css" href="css/base/google_icon.css"/>
+                </head>
+    <body class="ui-body-h" style="background-color:#231F20 !important;overflow:hidden;">
+        <script type="text/javascript" src="scripts/base/jquery.js"></script>
+        <script type="text/javascript" src="scripts/base/jquery-migrate.js"></script>
+        <script type="text/javascript" src="scripts/base/jquery.ajaxQueue.js"></script>
+        <script type="text/javascript">
+            var dd = $.Deferred();
+            var jqd = $.Deferred();
+            $.when(dd, jqd).done(doInit);
+            $(document).bind('mobileinit', function () {
+                             $.support.cors = true;
+                             $.mobile.allowCrossDomainPages = true;
+                             $.mobile.pushStateEnabled = false;
+                             $.mobile.defaultPageTransition = 'none';
+                             jqd.resolve();
+                             
+                             });
+                             function doInit(){
+                                 initStart();
+                             }
+        </script>
+        <div id="mainhomepage" data-role="page" data-theme="h" data-title="Home Page" class="retinamain ui-page-theme-h">
+            <img src="css/base/images/splash-screenNew.gif"  id="splashscreen" style="height:auto;width:100%;display:none;margin-top:60%;"/>
+            <div class="ui-content" role="main">
+                <div id="maincontentimgdiv"></div>
+                <div id="popupcontainer">
+                    <div id="popupcontainerinner">
+                        <div id="popupitemlogin" class="popupitem">
+                            <div class="popupborder">
+                                <div id="loginpopup" data-theme="h">
+                                    <!--<div  data-theme="h" id="loginheader" class="ui-bar-h">
+                                        <h3 id="loginpopuphead">Login</h3>
+                                    </div>-->
+                                    <div data-theme="h" class="ui-content logincontentdiv">
+                                        <div class="logintable">
+                                            <div  class="loginfielddiv">
+                                                <div id="loginfieldsusername" class="loginfields loginfieldsusername"></div>
+                                                <div class="loginfieldinput loginfieldsusername">
+                                                    <input style="background: #2e303c !important;color: white;" type="text" name="login-username" id="login-username" value="" data-theme="h"/>
+                                                </div>
+                                            </div>
+                                            <div  class="loginfielddiv">
+                                                <div id="loginfieldspassword" class="loginfields loginfieldspassword"></div>
+                                                <div class="loginfieldinput loginfieldspassword">
+                                                    <input style="background: #2e303c !important;color: white;" type="password" data-theme="h" name="login-password" id="login-password" value="" />
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="cleardiv"></div>
+                                            <div class="loginfielddiv loginbuttongrid">
+                                                <div id="loginuserbtndiv" onclick="hideKeyboard(event, false); loginUser();">
+                                                    <a class="ui-btn-h" id="loginuserbtn" ></a>
+                                                </div>
+                                            </div>
+                                            
+                                           <!-- <div class="loginfielddiv loginbuttongrid">
+                                                <div id="loginuserbtndiv">
+                                                    <a class="ui-btn-h" id="loginuserbtn" onclick="hideKeyboard(event, false); loginUserapple();">Login with Apple</a>
+                                                </div>
+                                            </div>-->
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="popupitemportal" class="popupitem popupitemhide">
+                            <div class="popupborder">
+                                <div id="portalselectpopup" data-theme="h">
+                                    <div  data-theme="h" id="portalselectheader" class="ui-bar-h">
+                                        <h3 id="portalselecthead">Portal</h3>
+                                    </div>
+                                    <div data-theme="h" class="ui-content preferencecontentdiv">
+                                        <div class="prefrencesdiv">
+                                            <fieldset data-role="controlgroup" data-iconpos="left" data-theme="h" id="fieldsetportals" class="preferencesfieldset ui-btn-icon-left">
+                                                <legend id="portallegend"></legend>
+                                                <label id='portal0label' class='understandlabel'>
+                                                    <input type='checkbox' name='radio-choice-portal' id='portalpref0' class='preferenceinitial' value='' data-theme='h'/>
+                                                    <span id="portal0labeltxt">
+                                                    </span>
+                                                </label>
+                                            </fieldset>
+                                            <div class="selectportalbtn">
+                                                <a class="preferencebtn ui-btn-h ui-shadow ui-btn-corner-all ui-shadow-icon" id="portalselectbtn"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end content -->
+        </div><!-- end page  -->
+        
+        
+        
+        
+        <div data-role="page" id="termsconditionpage" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+            <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+                <div id="supportpageheader">
+                    <div id="supportviewheader" class="supportviewheader1"></div>
+                </div>
+                
+            </div>
+            <div class="ui-content" role="main" id="supportmaincontent" style="background-color:white !important;">
+                <div id="supportmaincontentwrapper" data-theme="h" class="wrapper" style="overflow:auto !important;">
+                    <div id="supportdivscroller" class="scrollable" style="margin-bottom: 20%;overflow-y: visible;position: relative;height: -webkit-fill-available;">
+                        <div id="novideopodcastdiv" class="nopodcastdiv novideosdiv"></div>
+                        <div id="termsdiv" class="termsdiv1 datacontent"></div>
+                        
+                    </div>
+                    <div class="navfieldsetdiv" style="bottom: 0;background-color: #EAEAEA !important;height: 15%;position: fixed;">
+                        <div id="mprevbtndiv" class="nextprevbtndiv" data-theme="h">
+                            <div class="navlinkdiv"><a id="mprevlink" class="prevbutton"></a></div>
+                        </div>
+                        <div id="mnextbtndiv" class="nextprevbtndiv" data-theme="h">
+                            <div class="navlinkdiv"><a id="mnextlink" class="nextbutton"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="supportfooter" data-role="footer" data-position="fixed" class="footerbar">
+                <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft">
+                    <div class="footernavbarleft">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+       
+       
+       <div data-role="page" id="termsconditionpage2" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+           <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+               <div id="supportpageheader">
+                   <div id="supportviewheader" class="supportviewheader2"></div>
+               </div>
+               
+           </div>
+           <div class="ui-content" role="main" id="supportmaincontent" style="background-color:white !important;">
+               <div id="supportmaincontentwrapper" data-theme="h" class="wrapper">
+                   <div id="supportdivscroller" class="scrollable" style="margin-bottom: 20%;">
+                       <div id="novideopodcastdiv" class="nopodcastdiv novideosdiv"></div>
+                       <div id="termsdiv" class="termsdiv2 datacontent"></div>
+                       
+                   </div>
+                   <div class="navfieldsetdiv" style="bottom: 0;background-color: #EAEAEA !important;height: 15%;position: fixed;">
+                       <div id="mprevbtndiv" class="nextprevbtndiv" data-theme="h">
+                           <div class="navlinkdiv"><a id="mprevlink" class="prevbutton disagreeterm2"></a></div>
+                       </div>
+                       <div id="mnextbtndiv" class="nextprevbtndiv" data-theme="h">
+                           <div class="navlinkdiv"><a id="mnextlink" class="nextbutton agreeterm2"></a></div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           
+           <div id="supportfooter" data-role="footer" data-position="fixed" class="footerbar">
+               <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft">
+                   <div class="footernavbarleft">
+                       
+                   </div>
+               </div>
+           </div>
+       </div>
+        
+        
+        
+        
+        
+        
+        
+        
+    <!--    <div data-role="page" id="OtaDetailPage" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+            <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+                <div id="supportpageheader">
+                    <div id="supportviewheader"> OTA</div>
+                </div>
+                
+            </div>
+            
+            <div class="ui-content" role="main" id="supportmaincontent">
+                <div id="supportmaincontentwrapper" data-theme="h" class="wrapper">
+                    <div id="mayankdis" style="position: fixed;height: auto;background-color: #EAEAEA;width: 100%; overflow: scroll; font-size: 0.8em; padding: 4px;border-bottom:1px solid black;">
+                        
+                        <br><br><span>Perusal Time</span> :<span class="text-red" style="color: #dd4b39" id="perusaltime"> </span>
+                        <br>
+                        <span>Assessment Time</span> :<span class="text-red" style="color: #dd4b39" id="assessmenttime" > </span>
+                        <br>
+                        <br>
+                        <span>Sections</span>
+                        
+                       
+                        <br>
+                        <div id="section"></div>
+                        
+                        <span>Overall Pass Mark :</span>:<span class="text-red" style="color: #dd4b39" id="overallpassmarks"> </span>
+                    </div>
+                    <h3 class="podcastheaderdiv ui-collapsible-heading" style="margin-top: 150px;position: fixed;width: 100%;">
+                        <div class=" ui-btn ui-btn-icon-right ui-btn-h" style=" padding-top: 5px; padding-bottom: 5px">Assessment Guidelines</div>
+                    </h3>
+                    
+                    
+                    <div id="supportdivscroller" class="scrollable" style="margin-bottom: 20%;margin-top: 170px;">
+                        <div id="novideopodcastdiv" class="nopodcastdiv novideosdiv"></div>
+                        
+                        <div id="OtaGuidlineDiv" style="padding: 10px 4px;">
+                        </div>
+                        <p id="testdata"></p>
+                    </div>
+                    
+                    <div class="theorypadderdiv"></div>
+                </div>
+            </div>
+            
+            <div id="supportfooter" data-role="footer" data-position="fixed" class="footerbar">
+                <div class="amnavfieldsetdiv">
+                    <div id="prevbtndiv" class="nextprevbtndiv" data-theme="h">
+                        <div class="navlinkdiv"><a id="disagreelink" class="prevbutton">Agree</a></div>
+                    </div>
+                    <div id="nextbtndiv" class="nextprevbtndiv" data-theme="h">
+                        <div class="navlinkdiv"><a id="agreelink" class="nextbutton">Disagree</a></div>
+                    </div>
+                </div>
+                <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft">
+                    <div class="footernavbarleft">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    
+
+
+<div data-role="page" id="bookingPage" style="background-color: #eaeaea" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+
+     <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+
+         <div id="supportpageheader">
+             <div id="bookingfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon" style="float: left;"></div>
+             <div class="bookingIcon"></div>
+             <div id="supportviewheader" style="width: 33% !important;margin-left: 0% !important; float: left; text-align: left;padding-top:16px !important" class="moduleTitleeClasses "> BOOKINGS </div>
+
+         </div>
+       
+
+     </div>
+     <div><ul id="AvailableBookingsul" data-role="listview" data-divider-theme="h"
+                data-theme="h" data-icon="false"></ul></div>
+   
+
+
+
+    <!--<div id="videopagefooter" data-role="footer" data-position="fixed" class="footerbar ui-footer ui-bar-inherit ui-footer-fixed slideup" role="contentinfo">
+        <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft ui-navbar" role="navigation">
+            <div class="footernavbarleft">
+                <div class="lhsmenuiconfooter">
+                    <div id="bookingfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon"></div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!--<div id="videopagefooter" data-role="footer" style="background:#191819 !important;height:60px;" data-position="fixed" class="footerbar ui-footer ui-bar-inherit ui-footer-fixed slideup" role="contentinfo">
+        <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft ui-navbar" role="navigation">
+            <div class="footernavbarleft">
+                <div class="lhsmenuiconfooter">
+                        <div id="bookingfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon"></div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>
+
+<div id="TAPS_Model" class="modal">
+
+     <div class="modal-content">
+         <span class="close">×</span>
+     <div class="box-header" style="padding:20px 20px 0 20px;">
+         <div id="first_Time" style="display:none;">
+             <h5 class="modal-title ng-scope" style="font-family:'Poppins';font-size: 15px;margin-top: 0px;font-weight: 900;" translate="">Congratulations</h5>
+             <p class="ng-binding" style="font-family: 'Poppins';font-size: 15px;"><span translate="" class="ng-scope">Thanks for enrolling on the</span> <span id="course_Name_First"></span>
+                 <span translate="" class="ng-scope"> course. You can now study the online theory for free.</span></p>
+             <p class="ng-binding" style="font-family: 'Poppins';font-size: 15px;"><span translate="" class="ng-scope">If you wish to qualify and get support, you will need to purchase a Training & Assessment Package.</span></p>
+         </div>
+     <h5 class="modal-title ng-scope" style="font-family:'Poppins';font-size: 15px;margin-top: 0px;font-weight: 900;" translate="">Purchase Your Training &amp; Assessment Package</h5>
+     <p class="ng-binding" style="font-family: 'Poppins';font-size: 15px;"><span translate="" class="ng-scope">To be assessed and recieve your final certificate, you will purchase a Training &amp;/or Assessment package. For the</span> <span id="course_Name"></span>
+     <span translate="" class="ng-scope">, you have the following packages to choose from:</span></p>
+     <div>
+     <!-- ngIf: trainingAssessmentPackageData.AccessmentCenters.length > 0 -->
+     </div>
+     </div>
+     <div class="closeTAPsLates" style="padding: 10px;text-align: center;background-color: #EEBEBE;color: black;margin: 11px;width: 70%;margin-left: 12%;" data-dismiss="modal" translate="">Decide Later</div>
+     <select name="cars" id="assessment_center">
+     <option value="">Select an Assessment Center:</option>
+
+     </select>
+     <hr>
+     <div class="modal-body" id="addTPAs">
+     <!-- ngRepeat: package in trainingAssessmentPackageData.PackageList -->
+
+
+     <!--<div class="box-body">
+     <div class="col-md-12 text-center pad">
+     <button class="btn-danger btn-success ng-scope" style="padding: 6px 50px;" ng-click="showhidePackagePage()" data-dismiss="modal" translate="">Back</button>
+     </div>
+     </div>-->
+     </div>
+     <div class="closeTAPs" style="padding: 10px;text-align: center;background-color: #EEBEBE;color: black;margin: 11px;width: 70%;margin-left: 12%;" data-dismiss="modal" translate="">Decide Later</div>
+     </div>
+</div>
+
+
+
+<div data-role="page" id="eClasse" style="background-color: #eaeaea;min-height: 420px !important;max-height: 800px !important;" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+
+ <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+
+ <div id="supportpageheader">
+     <div id="eClassfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon" style="float:left;"></div>
+ <div class="eclassIcon"></div>
+ <div id="supportviewheader" style="width: 33% !important;margin-left: 0% !important; float: left; text-align: left;" class="moduleTitleeClasses "> ECLASSES </div>
+
+ </div>
+
+ </div>
+
+ <button class="collapsibleEclass availableClass" style="color:white !important;background-color: #41424C;font-weight: bold;">Available eClasses</button>
+ <div class="content testT">
+ <div class="eclassesuldiv">
+ <ul id="AvailableEclassesul" data-role="listview" data-divider-theme="h"
+ data-theme="h" data-icon="false"></ul>
+ </div>
+ </div>
+
+ <button class="collapsibleEclass currentCalss" style="color:white !important;background-color: #41424C;font-weight: bold;">Current eClasses</button>
+ <div class="content testTNew">
+ <div class="eclassesuldiv">
+ <ul id="CurrentEclassesul" data-role="listview" data-divider-theme="h"
+ data-theme="h" data-icon="false">
+ </ul>
+ <div id="bookingdisclaimerdiv"></div>
+ </div>
+ </div>
+
+
+ <script>
+ var coll = document.getElementsByClassName("collapsibleEclass");
+ var i;
+
+ for (i = 0; i < coll.length; i++) {
+ coll[i].addEventListener("click", function() {
+ this.classList.toggle("active");
+ var content = this.nextElementSibling;
+ if (content.style.maxHeight){
+ content.style.maxHeight = null;
+ } else {
+ content.style.maxHeight = content.scrollHeight + "px";
+ }
+ });
+ }
+ </script>
+
+
+     <!--<div id="videopagefooter" data-role="footer" style="background:#191819 !important;height:60px;" data-position="fixed" class="footerbar ui-footer ui-bar-inherit ui-footer-fixed slideup" role="contentinfo">
+         <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft ui-navbar" role="navigation">
+             <div class="footernavbarleft">
+                 <div class="lhsmenuiconfooter">
+                     <div id="eClassfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon"></div>
+                 </div>
+             </div>
+         </div>
+     </div>-->
+</div>
+
+<div data-role="page" id="viewDatesPage" style="background-color: rgb(234, 234, 234);" data-theme="h" class="ui-responsive-panel ui-page-theme-h" >
+    <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+        <div id="supportpageheader">
+            <div id="viewDatesfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon" style="float: left;"></div>
+            <div id="supportviewheader" style="padding-top: 17px !important;width: auto !important;margin-left: 20% !important; float: left; text-align: left;" class="moduleTitleeClasses "> AVAILABLE DATES</div>
+        </div>
+    </div>
+    <div>
+        <div class="eclassesuldiv">
+            <ul id="viewDatessul" data-role="listview" data-divider-theme="h"  ="" data-theme="h" data-icon="false">
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="jobApplyPage" style="height:100vh !important;background-color: #eaeaea" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+
+    <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+
+        <div id="supportpageheader">
+            <div id="jobApplyfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon" style="float: left;"></div>
+            <div style="    padding-top: 17px !important;width: auto !important;margin-left: 10% !important; float: left; text-align: left;" class="moduleTitleeClasses "> JOB BOARD APPLICATION</div>
+
+        </div>
+
+    </div>
+
+    <div>
+        <div class="eclassesuldiv">
+            <img id="compImg" style="float: right;margin-right: 12px;height: 84px;" />
+            <p style="font-weight: bold;padding-left:10px;" class="JobtITLE"></p>
+            <div style="padding-left:15px;font-size:0.8em;">
+            <p class="catName" style="margin-bottom: 0px;margin-top: 0px;"></p>
+            <p class="pound" style="margin-bottom: 0px;margin-top: 5px;"></p>
+            <p class="location" style="margin-bottom: 0px;margin-top: 5px;"></p>
+            <p class="time" style="margin-bottom: 0px;margin-top: 5px;"></p>
+            </div>
+            <div class="viewDetailsJobBoard" style="padding: 10px;text-align: center;background-color: #EEBEBE;color: black;margin: 11px;width: 80%;margin-left: 6%;" data-dismiss="modal" translate="">View Details</div>
+            <p id="jobDetails" style="padding-left:10px;display:none;padding-right: 16px;padding-left: 16px;font-size:1em;"></p>
+            <hr>
+
+            <p style="font-weight: bold;padding-left:10px;margin-bottom:3px;">Cover Letter</p>
+            <div id="text-limit" style="padding-left:10px;font-size:0.8em;">
+                <p style="margin-bottom: 0px;margin-top: 0px;">4000 Maximum Characters</p>
+            </div>
+
+
+            <p id="reviewCoverL" style="display:none;text-align: left;color: black;width: 80%;margin-left: 6%;margin-top:9px"></p>
+            <p class="ifnocl" style="display:none;margin-left: 11px;color: red;font-size: 0.8em;">* No Cover Letter</p>
+            <textarea id="w3review" rows="8" cols="100" placeholder="Type your cover letter here...&#10; &#10; &#10; &#10; &#10; &#10; " style="background-color: white;width: 93%;margin-left: 3%;"></textarea>
+            <p class="checkCLlen" style="display: block;margin-right: 17px;color: red;font-size: 0.8em;text-align: right;"><span id="remain">4000</span> Characters Remaining</p>
+            <hr>
+
+            <p style="font-weight: bold;padding-left:10px;margin-bottom:3px;">CV</p>
+            <!--<div class="dx-viewport" data-theme="h" data-shadow="false" data-iconshadow="false" style="width: 93%;margin-left: 3%;background-color:transparent !important">
+                <div class="demo-container" data-theme="h" data-shadow="false" data-iconshadow="false">
+                    <div id="file-uploader-Job" data-theme="h" data-shadow="false" data-iconshadow="false"></div>
+
+                    <div  class="chunk-panel">
+                    </div>
+                </div>
+            </div>-->
+
+            <p id="reviewCV" style="padding:0px;display:none;text-align: left;color: black;;width: 80%;margin-left: 6%;"></p>
+
+            <p class="ifnocv" style="display:none;margin-left: 11px;color: red;font-size: 0.8em;">* No CV uploaded</p>
+            <button class="impostFile" onclick="importData()">Upload CV</button>
+
+           <div style="margin:10px;"> <p id="filenameJob"></p>
+            <p id="fileNoSupportError"></p>
+           </div>
+            <div id="uploadSuccs" style="display:none;">
+                <div class="CVname" style="padding: 10px;text-align: center;background-color: #EEBEBE;color: black;margin: 0px;width: 81%;margin-left: 6%;">Remove </div>
+                <div class="removeCV" style="padding: 10px;text-align: center;background-color: #EEBEBE;color: black;margin: 0px;width: 37.38%;margin-left: 6%;float: left;">Remove</div>
+                <div class="keepCV" style="padding: 10px;text-align: center;background-color: #e6896a;color: black;margin: 0px;width: 37%;margin-right: 8.5%;float: right;margin-top: 0px;">Keep</div>
+            </div>
+            <!--<div class="viewExistingCV" style="margin-top: 45px !important;padding: 10px;text-align: center;background-color: #EEBEBE;color: black;margin: 11px;width: 80%;margin-left: 6%;">Use Existing CV</div>
+            <div class="newCV" style="padding:10px;display:none;text-align: center;background-color: #EEBEBE;color: black;;width: 80%;margin-left: 6%;"></div>-->
+
+            <p id="uploadedCV" style="display:none;margin-bottom: 0px;margin-left: 23px;"></p>
+
+            <button class="collapsibleJobClass currentCalss" style="background-color: #41424C;margin-bottom: 0px;margin-top: 50px;">Use Existing CV</button>
+            <div class="content cvLIST">
+                <div class="eclassesuldiv">
+                    <ul id="ExistingCV" data-role="listview" data-divider-theme="h"
+                        data-theme="h" data-icon="false">
+
+                    </ul>
+                    <div id="bookingdisclaimer"></div>
+                </div>
+            </div>
+
+
+            <script>
+                var coll = document.getElementsByClassName("collapsibleJobClass");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("actives");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                    } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+                }
+            </script>
+            <br>
+            <br>
+            <hr>
+            <div class="reviewApplication" style="padding: 10px;text-align: center;background-color: #61c8a6;color: black;margin: 11px;width: 80%;margin-left: 6%;">Review Application</div>
+            <div class="editApplication" id="editApplicationID" style="padding: 10px;display:none;text-align: center;background-color: #61c8a6;color: black;margin: 11px;width: 80%;margin-left: 6%;">Edit Application</div>
+            <div  id="sendApplicationID" style="padding: 10px;display:none;text-align: center;background-color: #61c8a6;color: black;margin: 11px;width: 80%;margin-left: 6%;">Send Application</div>
+        </div>
+    </div>
+
+</div>
+
+
+<div data-role="page" id="jobboardpage" style="height: 100vh;background-color: #eaeaea" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+
+    <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+
+        <div id="supportpageheader">
+            <div id="jobboardfooterleftbckbtn" class="lhsmenuicon lhsmenupodicon" style="float: left;"></div>
+            <div id="jobboardimgtxtCaps" style="    padding-top: 17px !important;width: auto !important;margin-left: 24% !important; float: left; text-align: left;" class="moduleTitleeClasses ">JOB BOARD</div>
+
+        </div>
+
+    </div>
+
+    <div id="supportmessagediv" class="scrollable">
+
+        <div id="helpdeskmainadd" style="padding-top: 3px;" class="helpdeskmain " data-theme="h" data-collapsed="false" data-iconpos="right">
+
+            <div class="tab">
+                <button class="tablinks bctive" onclick="openCity(event, 'nearMe')">Near Me</button>
+                <button class="tablinks" onclick="openCity(event, 'All')">Show All</button>
+            </div>
+
+            <div id="London" class="tabcontent" style="display:none !important">
+                <h3>London</h3>
+                <p>London is the capital city of England.</p>
+            </div>
+
+            <div id="Paris" class="tabcontent" style="display:none !important">
+                <h3>Paris</h3>
+                <p>Paris is the capital of France.</p>
+            </div>
+
+
+            <div id="testdemo"></div>
+
+
+
+        </div>
+
+    </div>
+
+
+</div>
+    
+    <div data-role="page" id="OtaDetailPage" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+        <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+            <div id="supportpageheader">
+                <div id="supportviewheader" style="width:96% !important; margin-left: 2% !important;" class="moduleTitleOTA"> </div>
+            </div>
+            
+        </div>
+        <div class="ui-content" role="main" id="supportmaincontent" style="background-color: white !important;padding: 0px 1% !important;width: 98% !important; display: block;position: fixed;">
+            <div id="supportmaincontentwrapper" data-theme="h" class="wrapper" style="display: block;position: fixed;overflow-y: scroll;">
+                <div id="mayankdis" style="height: auto;background-color: white;width: 100%;font-size: 1em; padding: 4px;">
+                    
+                    <div style="padding: 10px;background-color: #e9e9e9; width:92%;" id="timingsAttempts">
+                        <!--<span id="spanperusaltime" style="color:#8f8f8f"></span> <span class="text-red" style="font-weight: bold;" id="perusaltime"> </span>
+                        <br>
+                        <span id="spanassessmenttime" style="color:#8f8f8f"></span> :<span class="text-red" style="font-weight: bold;" id="assessmenttime" > </span>-->
+                    </div>
+                
+                    <div style="padding: 10px;background-color: #e9e9e9; width:92%; margin-top:5px;">
+                        <span id="spansection" style="font-weight:bold"></span>
+                        <div id="section" style="font-size: 1em !important;color:#8f8f8f;"></div>
+                        <span id="spanoverallpassmarks" style="font-weight: bold;"></span> <span class="" style="font-weight:bold;" id="overallpassmarks"> </span>
+                    </div>
+                    
+                
+                </div>
+                <!--<h3 class="podcastheaderdiv ui-collapsible-heading" style="margin-top: 150px;position: fixed;width: 100%;">
+                    <div class=" ui-btn ui-btn-icon-right ui-btn-h" style=" padding-top: 5px; padding-bottom: 5px">Assessment Guidelines</div>
+                </h3>-->
+                
+                
+                <div id="supportdivscroller" class="scrollable" style="margin-bottom: 20%;">
+                    
+                    <div id="novideopodcastdiv" class="nopodcastdiv novideosdiv"></div>
+                    
+                    
+                    <p id="assGuidlines" style="padding-left: 4px; margin:0px;margin-top:15px;margin-bottom:-10px;    color: #8f8f8f;font-size: larger;"></p>
+                    <!--<h3 class="podcastheaderdiv ui-collapsible-heading" style="width: 100%;">
+                        <div class=" ui-btn ui-btn-icon-right ui-btn-h" style=" padding-top: 5px; padding-bottom: 5px" id="assGuidlines"></div>
+                    </h3>-->
+                    
+                    <div id="OtaGuidlineDiv" style="padding: 10px 4px;" class="datacontent">
+                    </div>
+                    <p id="testdata"></p>
+                
+                </div>
+                
+                <div class="theorypadderdiv"></div>
+            </div>
+        </div>
+        
+        <div id="supportfooter" data-role="footerOTAGuidlines" data-position="fixed" class="footerbar footerbarOTA" style="height:12% !important;">
+            <div class="amnavfieldsetdiv" style="overflow:hidden!important;">
+                <div id="prevbtndiv" class="nextprevbtndiv testdata" style="width:48% !important"  data-theme="h">
+                    <div class="navlinkdiv" id="otadisagree"><a id="disagreelink" class="prevbutton">Disagree</a></div>
+                </div>
+                <div id="nextbtndiv" class="nextprevbtndiv" style="width:48% !important"  data-theme="h">
+                    <div class="navlinkdiv" id="otaagree" ><a id="agreelink" class="nextbutton">Agree</a></div>
+                </div>
+            </div>
+            <div id="podfootericonsleft" data-role="navbar" style="background-color:#191818" class="nav-menu-bar footericonsleft">
+                <div class="footernavbarleft">
+                    <div id="otabackbtn" class="lhsmenuicon btnmenuopen moduleicon"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!--<div id="supportfooter" data-role="footerOTAGuidlines" data-position="fixed" class="footerbar" style="margin-bottom: 0px;border-top:1px solid white;background:#231F20 !important;">
+            <div class="amnavfieldsetdiv" style="height: 4.5em !important;">
+                <div id="otabackbtn" class="lhsmenuicon btnmenuopen moduleicon"></div>
+            </div>
+            <div id="podfootericonsleft" data-role="navbar" class="nav-menu-bar footericonsleft">
+                <div class="footernavbarleft">
+                    
+                </div>
+            </div>
+        </div>-->
+        
+    </div>
+    
+    <div data-role="page" id="OtaQuestionPage" style="height:90% !important;" data-theme="h" class="ui-responsive-panel ui-page-theme-h">
+        <div data-role="header" class="headbck podheadbck ui-bar-h" data-position="fixed" data-tap-toggle="false">
+            <div id="supportpageheader">
+                <div id="supportviewheader" class="otatitlefordiv" style="font-weight: normal;width: 100% !important;margin-left: 0% !important;"> </div>
+            </div>
+        </div>
+        <div style="width: 100%;">
+            
+            <div id="progressBar">
+                <span id="clockdiv" style="position:absolute;float:left;padding: 15px 0px 0px 15px;font-weight: bold;color: white;"></span>
+                <span style="float:right;padding: 15px 15px 0px 0px;font-weight: bold;color: white;" id="hideTimer">Hide</span>
+                <div></div>
+            </div>
+            
+            <div id="progressBar2" style="text-align: center;margin-top: -93px;padding: 2px;position: absolute;">
+                <span id="showHideTimer" style="margin-top: 11px;position:absolute;margin-left: -10%;color: white;    font-weight: bold;"> <img class="myButton" src="css/base/images/timerWhite.png" style="height: 17px;" /> Show </span>
+            </div>
+            
+            <!--    <h3 style="padding: 10px;margin-bottom: 0px;font-size: 20px;" id="ptimere">Persual Time Remaining:<span id="clockdiv"></span><spna class="myButton"  style='font-size:23px;'> &#8678; </spna> </h3> -->
+            
+            <span id="finishClick" onclick="finishClick()" class="wsnavlinkdivprevnew" style="display: none;width: 20%;float: right;margin-top: 10px;padding-top: 7px!important;margin-right: 10px;position: absolute;z-index: 9;right: 0;">
+                Finish
+            </span>
+            
+            <div id='quiz' style="padding: 0px;margin-top:-8px;margin-bottom:120px;"></div>
+            
+            <div id='quizResult' style="display:none;padding: 0px;margin-bottom: 50px;margin-top: 20px;padding: 5px;"></div>
+            
+            <div id="goBack" class="" data-theme="h" style="display: none;background-color: #55c7a6;width: 30%;margin-bottom: 99px;float: right;padding: 10px;margin-right: 15px;margin-top: 0px;">
+                <div class="navlinkdiv" style="padding-top: 0% !important;"><a style="color:white !important;" class="nextbutton ui-link">Continue</a></div>
+            </div>
+           
+        </div>
+        <!--<div id="pagefooter" data-position="fixed" class="footerbar ui-footer ui-bar-inherit ui-footer-fixed" data-tap-toggle="false">
+         <div id="footericonsleft" class="nav-menu-bar footericonsleft">
+         <div class="footernavbarleft">
+         <div class="lhsmenuicondiv"><div id="footerleftbckbtn" class="lhsmenuicon"></div></div>
+         
+         </div>
+         </div>
+         
+         
+         
+         <div class="rhsmenuicondiv">
+         <div id="coursepanelheaderrhs" class="rhsfooterion settingsicon"></div>
+         
+         </div>
+         </div>-->
+        <!--<div id="supportfooter" data-role="footerOTAQuestion" data-position="fixed" class="footerbar" style="margin-bottom: 0px;border-top:1px solid white;">
+         <div class="amnavfieldsetdiv" style="overflow: hidden!important;padding-left: 0% !important;">
+         <div id="otaquestionbackbtn" class="lhsmenuicon btnmenuopen moduleicon"></div>
+         </div>
+         
+         </div>-->
+        
+        <div id="supportfooter1" data-role="footerOTAQuestion" data-position="fixed" class="footerbar footerbarOTA" style="height: 12%!important;">
+            <div class="amnavfieldsetdiv" style="overflow: hidden!important;">
+                <div id="prevbtndiv" class="nextprevbtndiv" style="width:48% !important" data-theme="h">
+                    <div id="prev" class="wsnavlinkdivprevnew"><a style= "font-weight: normal;font-size: 1.1em;" id="wsprevlink1" class="wsprevbutton">Previous</a></div>
+                </div>
+                <div id="nextbtndiv" class="nextprevbtndiv" style="width:48% !important" data-theme="h">
+                    <div id="next" class="wsnavlinkdivnxtnew"><a style= "font-weight: normal;font-size: 1.1em;" id="wsnextlink1" class="wsnextbutton">Next</a></div>
+                </div>
+            </div>
+            <div id="podfootericonsleft" data-role="navbar" style="background-color: #191818" class="nav-menu-bar footericonsleft">
+                <div class="footernavbarleft">
+                    <div id="otaquestionbackbtn" class="lhsmenuicon btnmenuopen moduleicon"></div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    
+    
+        <div data-role="page" id="coursepage" data-theme="h" class="ui-responsive-panel  ui-page-theme-h" data-dom-cache="true">
+            <div id="coursepanel" data-role="panel" data-theme="h" data-position="left" data-display="reveal" data-swipe-close="false" data-dismissible="false" class="coursemenupanel">
+                <div id="lhsmenupageheader" class="pageheaderpanel headbck ui-bar-h" data-position="fixed" data-tap-toggle="false" role="banner">
+                    <div class="headericondivlhsdiv">
+                            <!--<div class="lhsmenuicondiv">
+                                <div id="footerleftbckbtn" class="lhsmenuicon lessonicon btnmenuopen"></div>
+                            </div>-->
+                        
+                        <div class="headericondivlhs courseiconlhs" style="display:none !important; ">
+                            <div id="headercourseiconlhs" class="headercourseiconlhs headericonlhs"></div>
+                        </div>
+                        <div class="headericondivlhs moduleiconlhs" style="display:none !important; ">
+                            <div id="headermoduleiconlhs" class="headermoduleiconlhs headericonlhs"></div>
+                        </div>
+                        <div class="headericondivlhs lessoniconlhs" style="display:none !important; ">
+                            <div id="headerlessoniconlhs" class="headerlessoniconlhs headericonlhs"></div>
+                        </div>
+                    </div>
+                    <div class="coursepanelheaderdiv">
+                        <div id="coursepanelheader">
+                            <div id="coursepanelheadericon" class="courseicon"></div>
+                            <div id="coursepanelheadertext">Courses</div>
+                        </div>
+                        <div id="rhsmenupageheader">
+                            <!--<div class="headericondiv lessoniconrhs">
+                                <div id="headerlessonicon" class="headericon"></div>
+                            </div>
+                            <div class="headericondiv moduleiconrhs">
+                                <div id="headermoduleicon" class="headericon"></div>
+                            </div>-->
+                            <div id="coursepanelheaderrhs" class="rhsfooterion settingsicon"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="coursemenupagecontent" class="ui-content" role="main">
+                    <div id="menucontentdiv">
+                        <div id="menucontentcourse" class="menuopen">
+                            <div id="menucontentcoursescroller"  class="wrapper">
+                                <div id="menucoursescroller"   class="scrollable">
+                                    <div id="sectionsearchdiv">
+                                        
+                                        <ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search courses & modules" data-filter-theme="h" class="ui-listview ui-listview-inset ui-corner-all sui-shadow">
+                                        </ul>
+                                    </div>
+                                    <div id="ulcourses"></div>
+                                    <div class="courselistpadderdiv"></div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div id="menucontentgroup"  class="menuclosed">
+                            <div id="menucontentgroupscroller"  class="wrapper" style="height: 100vh !important;overflow-y: scroll;overflow-x: hidden;padding-bottom:120px;">
+                                <div id="groupcontentscroller" class="scrollable" style="padding-bottom:120px;">
+                                    <div id="ulgroupsdiv">
+                                        <div id="sectionsearchdiv" style="background-color:white; margin-left:0% !important; width:100% !important;">
+                                            
+                                            <ul id="autocompleteM" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search modules & sections" data-filter-theme="h" class="ui-listview ui-listview-inset ui-corner-all sui-shadow">
+                                            </ul>
+                                        </div>
+                                       <div id="grouptitlehead"></div>
+                                       
+                                        
+                                        <div id="groupset" data-theme="h" data-dividertheme="h" data-role="collapsible-set" class="scosset">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="menucontentsection"  class="menuclosed">
+                            <div id="menucontentsectionscroller"  class="wrapper" style="height: 100vh !important;overflow-y: scroll;overflow-x: hidden;padding-bottom:120px;">
+                                <div id="sectioncontentscroller" class="scrollable" style="padding-bottom:120px; transform: none !important;">
+                                    <div id="ulscossdiv">
+                                        <div id="sectionsearchdiv" style="background-color:white; margin-left:0% !important; width:100% !important;">
+                                            
+                                            <ul id="autocompleteL" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search content" data-filter-theme="h" class="ui-listview ui-listview-inset ui-corner-all sui-shadow">
+                                            </ul>
+                                        </div>
+                                        <div id="sectiontitlehead"></div>
+                                        
+                                        <div id="scosset" data-theme="h" data-dividertheme="h" data-role="collapsible-set" class="scosset">
+                                        </div>
+                                    </div>
+                                    <div id="sectionmenupadderdiv" class="padderdiv"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="contentheader" class="pageheader headbck ui-bar-h" data-role="header" data-hide-during-focus="" data-position="fixed" data-tap-toggle="false">
+                <div class="contenticonsdivleft">
+                    <!--<div class="lhsmenuicondiv">
+                        <div id="footerleftbckbtnNew" class="lhsmenuicon lessonicon btnmenuopen"></div>
+                    </div>-->
+                    <div class="headericondivlhs courseiconlhs">
+                        <div id="courseleftmenubtn" class="headercourseiconlhs headericonlhs"></div>
+                    </div>
+                    <div class="headericondivlhs moduleiconlhs">
+                        <div id="moduleleftmenubtn" class="headermoduleiconlhs headericonlhs"></div>
+                    </div>
+                    <div class="headericondivlhs lessoniconlhs">
+                        <div id="lessonleftmenubtn" class="headerlessoniconlhs headericonlhs"></div>
+                    </div>
+                </div>
+                <div class="theoryviewhead"><div class="ui-title" id="theoryviewheader">Theory View</div></div>
+                <div id="menupageheadrhs">
+                    <div class="headericondiv lessoniconrhs">
+                        <div class="headericon rhslessonicon"></div>
+                    </div>
+                    <div class="headericondiv moduleiconrhs">
+                        <div class="headericon rhsmoduleicon"></div>
+                    </div>
+                    <div id="coursepanelheaderrhsNew" class="rhsfooterion settingsicon"></div>
+                </div>
+            </div>
+            
+            <div class="ui-content" role="main" id="coursepagecontent" >
+                <div id="coursepagecontentwrapper" class="wrapper">
+                    <div id="contentprimary" class="scrollable">
+                        <div id="lessonheaderdiv">
+                            <div id="lessonhead"></div>
+                            <div id="lessonheadclosediv">
+                                <div id="lessonheadclosebtn"></div>
+                            </div>
+                        </div>
+                        <div id="audiotheoryplayerdiv">
+                            <audio id="audiotheoryplayer" class="audiotheoryplayer" controls="controls" preload="auto"></audio>
+                        </div>
+                        <div id="initialcontent" class="initialcontent"></div>
+                        <div id="zoomcontentwrapper" class="wrapper">
+                            <div id="zoomcontentprimary" class="scrollable">
+                                <div id="theorydatacontent"></div>
+                            </div>
+                        </div>
+                                <div id="bookingcontent" class="bookingcontent">
+                                    <div id="bookingheader" class="bookingheader">
+                                    </div>
+                                    <div id="bookingdatediv" class="bookingdatediv"><input name="bookingdate" id="bookingdate" data-role="datebox" data-options='{"mode":"calbox"}'/></div>
+                                    <div id="bookingdetaildivmain">
+                                        <div id="bookingdetaildiv" class="bookingdetaildiv wrapper">
+                                            <div id="bookingdetailscroller" class="scrollable" >
+                                                <div class="bookingsuldiv">
+                                                    <ul id="bookingsul" data-role="listview" data-divider-theme="h"
+                                                        data-theme="h" data-icon="false">
+                                                    </ul>
+                                                    <div id="bookingdisclaimerdiv"></div>
+                                                </div>
+                                                <div id="tabletbookpadderdiv"></div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div id="assessmentresultdiv"></div>
+
+                        </div>
+                        <div id="contentnavdiv" class="understndbuttons contentnavdiv" data-theme="h">
+                            <div id="getPackbtndiv" class="nextprevbtndiv" data-theme="h">
+                                <div class="navlinkdivNew"><a id="getPackagelink" style="color:white !important;" class="prevbutton">GET PACKAGE</a></div>
+                            </div>
+                            <div class="navfieldsetdiv">
+                                <div class="understandbtndiv" data-theme="h">
+                                    <label id="understand1label" class="understandlabel">
+                                        <input type="radio" name="understand-radio" id="understand1" value="choice-1" checked="checked" /><span id="understand1txt"></span></label>
+                                </div>
+                                <div class="understandbtndiv">
+                                    <label id="understand2label" class="understandlabel">
+                                        <input type="radio" name="understand-radio" id="understand2" value="choice-2"/><span id="understand2txt"></span></label>
+                                    
+                                </div>
+                            </div>
+                            <div class="navfieldsetdiv">
+                                <div id="prevbtndiv" class="nextprevbtndiv" data-theme="h">
+                                    <div class="navlinkdiv"><a id="prevlink" class="prevbutton"></a></div>
+                                </div>
+                                <div id="nextbtndiv" class="nextprevbtndiv" data-theme="h">
+                                    <div class="navlinkdiv"><a id="nextlink" class="nextbutton"></a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="wscontentnavdiv" class="wscontentnavdiv" data-theme="h">
+                            <div id="wsnextprevbtndiv">
+                                <div class="wsnavlinkdivprev"><a id="wsprevlink" class="wsprevbutton"></a></div>
+                                <div class="wsnavlinkdivnxt"><a id="wsnextlink" class="wsnextbutton"></a></div>
+                            </div>
+                        </div>
+                        <div class="theorypadderdiv"></div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="panel" id="settingspanel" style="z-index: 9999" data-theme="h" data-position="right" data-display="overlay" data-swipe-close="true" data-dismissible="false" class="rhsmenupanel extramenupanel">
+                <div class="pageheaderpanelrhs headbck ui-bar-h" data-role="header" data-hide-during-focus="" data-position="fixed" data-tap-toggle="false" role="banner">
+                    <!--<div id="settingsmenuheader"></div>-->
+                    <div id="backmenubtn" class="lhsmenuicon btnmenuopen moduleicon" style="float: left;margin-left:4px;"></div>
+                    <div id="settingsmenuheader" style="width:86% !important;"></div>
+                </div>
+                <div id="rhsmenuscrollbarcontent"  class="ui-content" role="main">
+                    <div id="rhsmenuscrollbar"  class="wrapper">
+                        <div id="rhsmenuscrollerdiv"  class="scrollable">
+                            <div id="rhsmenuiconsdiv">
+                                <ul id="ulrhsmenu" data-role="listview">
+                                    <li class="libutton">
+                                        <a class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext" style="background-color: white !important;">
+                                            <div class="rhsmenuicon">
+                                                <div id="courseimg" class="supportimgdiv"></div>
+                                            </div><div class="rhsmenuitem coursesimgtxtNew liitemdisabled"></div></a>
+                                    </li>
+                                    <li data-role="list-divider" class="menudivider" data-theme="h"></li>
+                                    <li class="libutton" id="videomenubtnli">
+                                        <a style="background-color: white !important;" href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="videomenubtn" data-iconpos="notext">
+                                            <div id="videobtndiv" class="rhsmenuicon">
+                                                <div id="videobtnimg" class="supportimgdiv"></div>
+                                            </div><div id="videobtnimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    <li class="libutton" id="audiomenubtnli">
+                                        <a style="background-color: white !important;" href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="audiomenubtn" data-iconpos="notext">
+                                            <div id="audiobtndiv" class="rhsmenuicon">
+                                                <div id="audiobtnimg" class="supportimgdiv"></div>
+                                            </div><div id="audiobtnimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    <li class="libutton" id="plistmenubtnli">
+                                        <a style="background-color: white !important;" href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="plistmenubtn" data-iconpos="notext">
+                                            <div id="plbtndiv" class="rhsmenuicon">
+                                                <div id="plbtnimg" class="supportimgdiv"></div>
+                                            </div><div id="plbtnimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    <li class="libutton">
+                                         <a style="background-color: white !important;" id="mainJobBoardbtn" class="menuButtons rhsmenubtn ui-alt-icon ui-btn ui-btn-icon-right ui-icon-carat-r" data-iconpos="notext">
+                                             <div class="rhsmenuicon">
+                                                 <div id="amplifyimg" class="supportimgdiv">
+
+                                                 </div>
+                                             </div>
+                                             <div id="jobBoardTxt" class="rhsmenuitem">
+                                                 Job Board
+                                             </div>
+                                         </a>
+                                    </li>
+                                    <li data-role="list-divider" class="menudivider" data-theme="h"></li>
+                                    <li class="libutton">
+                                        <a style="background-color: white !important;" id="refreshbtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                                            <div class="rhsmenuicon">
+                                                <div id="podrefreshimg" class="supportimgdiv"></div>
+                                            </div><div class="rhsmenuitem refreshimgtxt"></div></a>
+                                    </li>
+                                    <li class="libutton">
+                                        <a style="background-color: white !important;" href="#" data-ajax="true" class="menuButtons rhsmenubtn ui-alt-icon" id="helpdeskmenubtn" data-iconpos="notext">
+                                            <div id="helpdeskbtndiv" class="rhsmenuicon">
+                                                <div id="helpdeskimg" class="supportimgdiv"></div>
+                                            </div><div id="helpdeskimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    <li class="libutton">
+                                        <a style="background-color: white !important;" id="supportmenubtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                                            <div class="rhsmenuicon">
+                                                <div id="supportimg" class="supportimgdiv"></div>
+                                            </div><div id="supportimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    <li class="libutton">
+                                        <a style="background-color: white !important;" id="mainlogoutbtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                                            <div class="rhsmenuicon">
+                                                <div id="logoutimg" class="supportimgdiv"></div>
+                                            </div><div id="logoutimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                    
+                                    <!--<li data-role="list-divider" class="menudivider" data-theme="h"></li>
+                                    <li class="libutton">
+                                        <a style="background-color: white !important;" id="mainamplifybtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                                            <div class="rhsmenuicon">
+                                                <div id="amplifyimg" class="supportimgdiv"></div>
+                                            </div><div id="amplifyTxt" class="rhsmenuitem">Amplify</div></a>
+                                    </li>-->
+                                    <li data-role="list-divider" class="menudivider" data-theme="h"></li>
+                                    <li class="libutton">
+                                        <a style="background-color: white !important;" id="closemenubtn" class="menuButtons rhsmenubtn ui-alt-icon" data-iconpos="notext">
+                                            <div class="rhsmenuicon">
+                                                <div id="closehelpimg" class="supportimgdiv"></div>
+                                            </div><div id="closehelpimgtxt" class="rhsmenuitem"></div></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div data-role="footer" data-position="fixed" class="footerbar coursefooter">
+                    <div class="rhsmenuicondiv">
+                        <div id="settingspanelrhs" class="rhsfooterion settingsicon"></div>
+                    </div>
+                </div>-->
+                <!--<div ="sideindex"></div>
+                <div id="pagefooter2" style="position:fixed;bottom:0;width:100%;height:40px;background:#231f20;" data-position="fixed" class="" data-tap-toggle="false">
+                    <div id="footericonsleft" class="nav-menu-bar footericonsleft">
+                        <div class="footernavbarleft">
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="rhsmenuicondiv">
+                        
+                        
+                    </div>
+                </div>-->
+            </div><!-- /panel -->
+            <div id="pagefooter" style="z-index: 9998" data-position="fixed" class="footerbar ui-footer ui-bar-inherit ui-footer-fixed" data-tap-toggle="false">
+                <div id="footericonsleft" class="nav-menu-bar footericonsleft">
+                    <div class="footernavbarleft">
+                        <!--<div class="lhsmenuicondiv"><div id="footerleftbckbtn" class="lhsmenuicon"></div></div>-->
+                        <div class="lhsmenuicondiv"><div id="podcastmenubtn" class="lhsmenuicon"></div></div>
+                        <div class="lhsmenuicondiv"><div id="eclassmenubtn" class="lhsmenuicon"></div></div>
+                        <div class="lhsmenuicondiv"><div id="bookingmenubtn" class="lhsmenuicon"></div></div>
+                        <div class="lhsmenuicondiv"><div id="jobmenubtn" class="lhsmenuicon"></div></div>
+                        <div class="lhsmenuicondiv"><div id="pdfmenubtn" class="lhsmenuicon"></div></div>
+                        <div class="lhsmenuicondiv"><div id="pdfmenubtnPay" class="lhsmenuicon"></div></div>
+                    </div>
+                </div>
+                <div class="rhsmenuicondiv">
+                    <!--<div id="coursepanelheaderrhs" class="rhsfooterion settingsicon"></div>-->
+                    <div id="coursepanelhomerhs" class="rhsfooterion homeicon"></div>
+                    
+                </div>
+            </div>
+            <div id="addfooterindex"></div>
+            
+            
+           <!-- <div id="pagefooter1" style="z-index: 9997;position:fixed;bottom:0;width:100%;height:40px;background:#231f20;" data-position="fixed" class="" data-tap-toggle="false">
+                <div id="footericonsleft" class="nav-menu-bar footericonsleft">
+                    <div class="footernavbarleft">
+                        
+                        
+                    </div>
+                </div>
+                <div class="rhsmenuicondiv">
+                    
+                    
+                </div>
+            </div>-->
+        </div>
+        <script type="text/javascript" src="scripts/base/jquery.mobile.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/base/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="scripts/base/jquery-touchpunch.js"></script>
+        <script type="text/javascript" src="scripts/base/eteacherclasses.js"></script>
+        <script type="text/javascript" src="scripts/base/controller.js"></script>
+        <script type="text/javascript" src="scripts/base/configutils.js"></script>
+        <script type="text/javascript" src="scripts/base/connection.js"></script>
+        <script type="text/javascript" src="scripts/base/eteacher.js"></script>
+        <script type="text/javascript" src="scripts/base/eteacherutils.js"></script>
+        
+        <script type="text/javascript" src="scripts/base/podcastpage.js"></script>
+        <script type="text/javascript" src="scripts/base/podcastmedia.js"></script>
+        <script type="text/javascript" src="scripts/base/coursepodcast.js"></script>
+        <script type="text/javascript" src="scripts/base/eclassvideo.js"></script>
+        <script type="text/javascript" src="scripts/base/userplaylist.js"></script>
+        <script type="text/javascript" src="scripts/base/mediaelement-and-player.js"></script>
+        <script type="text/javascript" src="scripts/base/jqm-datebox.core.js"></script>
+        <script type="text/javascript" src="scripts/base/jqm-datebox.mode.calbox.js"></script>
+        <script type="text/javascript" src="scripts/base/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="scripts/base/iscroll.js"></script>
+        <script type="text/javascript" src="scripts/base/iscroll-zoom.js"></script>
+        <script type="text/javascript" src="scripts/base/Date2.js"></script>
+        <link rel="stylesheet" type="text/css" href="scripts/base/testing2.css" />
+        <link rel="stylesheet" type="text/css" href="scripts/base/testing3.css" />
+        <script type="text/javascript" src="scripts/base/jobboard.js"></script>
+        <script src="scripts/base/testing1.js"></script>
+        
+        <script type="text/javascript" src="scripts/base/helpdesk.js"></script>
+        <script type="text/javascript" src="scripts/base/v3_st.js"></script>
+        <script type="text/javascript" src="https://webservices.securetrading.net/js/v3/st.js"></script>
+
+        <script type="text/javascript">
+            document.addEventListener('deviceready', deviceReady, false);
+            function deviceReady() {
+                deviceReadyInit();
+                dd.resolve();
+                //alert("in device");
+                
+                /*var userAgent = navigator.userAgent.toLowerCase();
+                var isTablet = /(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(.*touch))|kindle|playbook|silk|(puffin(?!.*(IP|AP|WP))))/.test(userAgent);
+                alert(isTablet);
+               */
+                var el = document.getElementById("login-password");
+
+                el.onkeydown = function(evt) {
+                    evt = evt || window.event;
+                    
+                    if(evt.keyCode == 13){
+                        hideKeyboard(event, false);
+                        loginUser();
+                    }
+                };
+                 
+
+            }
+        </script>
+    </body>
+</html>
